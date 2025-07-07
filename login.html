@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Roblox Clone</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #232527 0%, #393b3d 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-box {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+            padding: 40px 32px 32px 32px;
+            width: 350px;
+            text-align: center;
+        }
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #232527;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+        .logo .clone {
+            color: #ff4444;
+        }
+        .login-title {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            color: #232527;
+        }
+        .login-box input {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f7f7f7;
+            transition: border 0.2s;
+        }
+        .login-box input:focus {
+            border: 1.5px solid #ff4444;
+            outline: none;
+        }
+        .login-box button {
+            width: 100%;
+            padding: 14px;
+            background: #ff4444;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .login-box button:hover {
+            background: #e03a3a;
+        }
+        .error {
+            color: #ff4444;
+            margin-bottom: 14px;
+            font-size: 1rem;
+        }
+        .login-box a {
+            color: #232527;
+            text-decoration: underline;
+            font-size: 0.97rem;
+            display: inline-block;
+            margin-top: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <div class="logo">Roblox<span class="clone">Clone</span></div>
+        <div class="login-title">Acesse sua conta</div>
+        <div id="error" class="error"></div>
+        <input type="text" id="username" placeholder="Usuário" autocomplete="username">
+        <input type="password" id="password" placeholder="Senha" autocomplete="current-password">
+        <button onclick="login()">Entrar</button>
+        <a href="index.html">Voltar para o início</a>
+    </div>
+    <script>
+        // Exemplo simples de login (não seguro, apenas para demonstração)
+        function login() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorDiv = document.getElementById('error');
+
+            // Simulação de usuário banido
+            if (localStorage.getItem('banido') === 'true') {
+                errorDiv.textContent = "Sua conta está banida!";
+                return;
+            }
+
+            // Usuário e senha fixos para teste
+            if (username === "admin" && password === "1234") {
+                localStorage.setItem('logado', 'true');
+                window.location.href = "index.html";
+            } else {
+                errorDiv.textContent = "Usuário ou senha inválidos!";
+            }
+        }
+    </script>
+</body>
+</html>

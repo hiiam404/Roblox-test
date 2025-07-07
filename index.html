@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Clone</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">Roblox<span class="clone">Clone</span></div>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="#">Jogos</a>
+            <a href="#">Avatar</a>
+            <a href="#">Comunidade</a>
+            <a href="login.html">Login</a>
+            <a href="cadastre.html">Cadastre-se</a>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Bem-vindo ao Roblox Clone!</h1>
+            <p>Jogue, crie e explore mundos incríveis com amigos.</p>
+            <a href="cadastre.html" class="btn">Cadastre-se Grátis</a>
+        </section>
+        <section class="games">
+            <h2>Jogos Populares</h2>
+            <div class="games-list">
+                <div class="game-card">
+                    <img src="https://placehold.co/180x100/222/FFD600?text=Obby" alt="Jogo 1">
+                    <span>Obby Aventura</span>
+                </div>
+                <div class="game-card">
+                    <img src="https://placehold.co/180x100/222/FFD600?text=Simulador" alt="Jogo 2">
+                    <span>Simulador de Cidade</span>
+                </div>
+                <div class="game-card">
+                    <img src="https://placehold.co/180x100/222/FFD600?text=Battle" alt="Jogo 3">
+                    <span>Batalha Royale</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Roblox Clone. Não afiliado ao Roblox Corporation.</p>
+    </footer>
+
+    <!-- Painel de Banimento para o criador/admin -->
+    <div id="admin-ban-panel" style="position:fixed;bottom:20px;right:20px;background:#232527;padding:16px;border-radius:8px;box-shadow:0 2px 8px #0003;">
+        <h4 style="color:#FFD600;margin:0 0 8px 0;">Painel de Banimento</h4>
+        <input type="text" id="banUserInput" placeholder="Usuário para banir" style="padding:6px;border-radius:4px;border:1px solid #FFD600;">
+        <button onclick="banirUsuario()" style="background:#FFD600;color:#232527;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;">Banir</button>
+        <div id="banMsg" style="color:#FFD600;margin-top:8px;font-size:0.95rem;"></div>
+    </div>
+    <script>
+        // Painel de banimento
+        function banirUsuario() {
+            const user = document.getElementById('banUserInput').value.trim();
+            const banMsg = document.getElementById('banMsg');
+            if (!user) {
+                banMsg.textContent = "Digite o nome do usuário!";
+                return;
+            }
+            let banned = JSON.parse(localStorage.getItem('bannedUsers') || '[]');
+            if (!banned.includes(user)) {
+                banned.push(user);
+                localStorage.setItem('bannedUsers', JSON.stringify(banned));
+                banMsg.textContent = `Usuário "${user}" banido!`;
+            } else {
+                banMsg.textContent = `Usuário "${user}" já está banido.`;
+            }
+        }
+
+        // Bloqueia acesso de usuários banidos
+        let banned = JSON.parse(localStorage.getItem('bannedUsers') || '[]');
+        let logado = localStorage.getItem('logadoUser');
+        if (logado && banned.includes(logado)) {
+            document.body.innerHTML = `
+                <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;">
+                    <h1 style="color:#FFD600;">Você foi banido!</h1>
+                    <p style="color:#fff;">Entre em contato com o suporte para mais informações.</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
