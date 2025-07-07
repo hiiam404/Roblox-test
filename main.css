@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; padding: 0;
+    background: #111;
+    color: #fff;
+}
+.navbar {
+    background: #111;
+    color: #FFD600;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FFD600;
+}
+.clone {
+    color: #fff;
+}
+nav a {
+    color: #FFD600;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+.hero {
+    text-align: center;
+    padding: 60px 20px 40px 20px;
+    background: #222;
+}
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #FFD600;
+}
+.btn {
+    background: #FFD600;
+    color: #111;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+}
+.games {
+    padding: 40px 20px;
+    background: #181818;
+}
+.games-list {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.game-card {
+    background: #222;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    width: 180px;
+    text-align: center;
+    padding: 16px;
+    color: #FFD600;
+}
+.game-card img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+footer {
+    background: #111;
+    color: #FFD600;
+    text-align: center;
+    padding: 16px 0;
+    margin-top: 40px;
+}
